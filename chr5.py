@@ -5,7 +5,7 @@ import openai
 openai.api_key = apikey
 
 
-st.set_page_config(page_title=" \U0001f99cChatBot\U0001f99c  \U0001f4ac  I2A2 ")
+st.set_page_config(page_title=" \U0001f99cChatBot Eliza\U0001f99c  \U0001f4ac  I2A2 ")
 
 if "escopo" not in st.session_state:
     st.session_state.escopo = "Internet"
