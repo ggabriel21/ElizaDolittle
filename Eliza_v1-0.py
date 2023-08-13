@@ -75,6 +75,7 @@ if "consultas" not in st.session_state.keys():
 #    st.session_state.check_msg = [{"role": "system", "content": "Voce e um psicologo. Responda #POSITIVO se a questao a seguir e relativa a psicologia. Responda NEGATIVO no caso contrario."}]
     
 # Mostrar todas as mensagens da area de chat
+# Não mostrar as 2 primeiras (sistema e resposta)
 
 if len(st.session_state.consultas) >2:
     for message in st.session_state.consultas[2:]:
@@ -97,7 +98,9 @@ if prompt := st.chat_input(disabled=not (st.session_state.api_key)):
         st.sidebar.info("Prompt n\u00e3o \u00e9 relativo a assuntos requeridos!!!")
 
 
-# Gera uma noa mensagem. se a ultima nao foi de assistant. Tem que ter key valida
+# Gera uma nova mensagem. se a ultima nao foi de assistant. Tem que ter key valida
+# mandamos  mensagem de condicionamento juntamente com a input do usuario
+# mas essa mensagem não é enviada para a tela
 
 if (st.session_state.api_key) and st.session_state.consultas[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
